@@ -31,6 +31,10 @@ const server = http.createServer((req, res) => {
 
   res.statusCode = statusCode;
   fs.readFile(directory, (err, data) => {
+    if (err) {
+      throw new Error(err.message);
+    }
+
     res.end(data);
   });
 });
